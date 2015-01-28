@@ -9,7 +9,7 @@
 * Item 3, 4 : [@starpoz](https://twitter.com/starpoz)
 * Item 5, 6 : [@redboltz](https://twitter.com/redboltz)
 
-### [第2回 2015/2/25(予定)]
+### [第2回 2015/2/25](https://atnd.org/events/62014)
 
 * Item 7, 8 : [@Talos208](https://twitter.com/Talos208)
 * Item 9, 10 : [@uchan_nos](https://twitter.com/uchan_nos)
