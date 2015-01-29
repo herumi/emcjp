@@ -13,7 +13,7 @@
 
 * Item 7, 8 : [@Talos208](https://twitter.com/Talos208)
 * Item 9, 10 : [@uchan_nos](https://twitter.com/uchan_nos)
-* Item 11, 12 : 募集中
+* Item 11, 12 : [@keisukefukuda](https://twitter.com/keisukefukuda)
 
 ### 疑問やコメントなど(随時思い出したら書く)
 
