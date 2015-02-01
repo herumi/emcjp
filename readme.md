@@ -35,6 +35,8 @@ The third paragraph (beginning with "These examples all show lvalue reference  p
 Scottからメール掲載許可を得たので、今後の参考のためにもここに転載しておきます。
 
 ##### 私→Scott
+
+```
 Hi Soctt,
 
 This question is about 2015-01-20: Third Release.
@@ -79,9 +81,11 @@ But I don't get the answer.
 
 Thanks
 Takatoshi
+```
 
 ##### Scott→私
 
+```
 |    This question is about 2015-01-20: Third Release.
 |
 |    Item1 page 12, there is the following paragraph:
@@ -121,9 +125,11 @@ Thanks again to you and your colleague for reporting this issue.
 
 
 Scott
+```
 
 ##### 私→Scott
 
+```
 Hi Scott,
 
 Thank you for the reply. I understood it clearly now. Can I forward
@@ -135,9 +141,11 @@ https://atnd.org/events/60511
 
 Thanks
 Takatoshi
+```
 
 ##### Scott→私
 
+```
 |    Thank you for the reply. I understood it clearly now. Can I forward
 |    this email to the members of study group? I believe that they would be
 |    glad to hear your reply.
@@ -150,6 +158,7 @@ Of course.
 Thanks for this link.
 
 Scott
+```
 
 
 ### Item 2のauto a{3}がinitializer_listになるのは気持ち悪い。
