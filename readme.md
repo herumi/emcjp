@@ -28,9 +28,15 @@
 
 ### Item 2のauto a{3}がinitializer_listになるのは気持ち悪い。
 
-仕様変更があるかも(by [@pepshiso](https://twitter.com/pepshiso/status/560384555257851904))。
-[New Rules for auto deduction from braced-init-list](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3922.html)
+C++17で仕様変更された(by [@pepshiso](https://twitter.com/pepshiso/status/560384555257851904))。
+[New Rules for auto deduction from braced-init-list](http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n3922.html)
 
+```
+auto x{1}; // int
+auto x{1, 2}; // error
+auto x = {1}; // 初期化リスト
+auto x = {1, 2}; // 初期化リスト
+```
 ### Item 6のvector<bool>のoperatorをautoで受けると駄目な話。
 
 [item6-1.cpp](https://github.com/herumi/emcjp/blob/master/src/item6-1.cpp)
