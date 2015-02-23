@@ -3,6 +3,8 @@
 
 ## 資料置き場
 
+### [eratta](http://www.aristeia.com/BookErrata/emc++-errata.html)
+
 ### [第1回 2015/1/28](https://atnd.org/events/60511)
 
 * Item 1, 2 : [@herumi](https://twitter.com/herumi), [templateとautoの型推論](http://www.slideshare.net/herumi/template-44013078)
@@ -28,7 +30,7 @@
 勉強会の中で出席者より質問のあった↑件、Scottに問い合わせ、本の内容に誤りがあったとの回答を得ました。errataにも掲載されました。
 
 http://www.aristeia.com/BookErrata/emc++-errata.html
-!  1/30/15 txk PDF      12        
+!  1/30/15 txk PDF      12
 The third paragraph (beginning with "These examples all show lvalue reference  parameters, but type deduction works exactly the same way for rvalue reference parameters") should be removed. When the type of param in the template f on page 11 is changed to an rvalue reference (i.e., to have type "T&&"), it becomes a universal reference, and then the rules for Case 2 (on pages 13-14) apply.
 
 #### 経緯
