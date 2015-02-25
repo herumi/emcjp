@@ -19,7 +19,7 @@
 
 ### 疑問やコメントなど(随時思い出したら書く)
 
-### p.12の
+### Item 1 p.12の
 
 >These examples all show lvalue reference parameters, but
 >type deduction works exactly the same way for rvalue reference parameters.
@@ -38,6 +38,25 @@ auto x = {1, 2}; // 初期化リスト    初期化リスト
 auto x{1};       // 初期化リスト    int
 auto x{1, 2};    // 初期化リスト    error
 ```
+
+### Item 3のdecltype(x)とdecltype((x))で意味が変わる例
+
+```
+// C++14 only
+decltype(auto) f2()
+{
+    static int x = 0;
+    return (x); // ここをreturn xにするとコンパイルエラーになる。
+}
+
+int main()
+{
+    printf("f2()=%d\n", f2());
+    f2() = 3;
+    printf("f2()=%d\n", f2());
+}
+```
+
 ### Item 6のvector<bool>のoperatorをautoで受けると駄目な話。
 
 [item6-1.cpp](https://github.com/herumi/emcjp/blob/master/src/item6-1.cpp)
