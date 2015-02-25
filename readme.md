@@ -32,10 +32,11 @@ C++17で仕様変更された(by [@pepshiso](https://twitter.com/pepshiso/status
 [New Rules for auto deduction from braced-init-list](http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n3922.html)
 
 ```
-auto x{1}; // int
-auto x{1, 2}; // error
-auto x = {1}; // 初期化リスト
-auto x = {1, 2}; // 初期化リスト
+                 // C++11, C++14    C++17
+auto x = {1};    // 初期化リスト    初期化リスト
+auto x = {1, 2}; // 初期化リスト    初期化リスト
+auto x{1};       // 初期化リスト    int
+auto x{1, 2};    // 初期化リスト    error
 ```
 ### Item 6のvector<bool>のoperatorをautoで受けると駄目な話。
 
