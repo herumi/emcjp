@@ -3,7 +3,7 @@
 
 ## 資料置き場
 
-### [eratta](http://www.aristeia.com/BookErrata/emc++-errata.html)
+### [本家eratta](http://www.aristeia.com/BookErrata/emc++-errata.html)
 
 ### [第1回 2015/1/28](https://atnd.org/events/60511)
 
