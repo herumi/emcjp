@@ -14,7 +14,7 @@
 ### [第2回 2015/2/25](https://atnd.org/events/62014)
 
 * Item 7, 8 : [@Talos208](https://twitter.com/Talos208)
-* Item 9, 10 : [@uchan_nos](https://twitter.com/uchan_nos)
+* Item 9, 10 : [@uchan_nos](https://twitter.com/uchan_nos), [Item 9, 10](http://www.slideshare.net/uchan_nos/effective-modern-c-2pptx)
 * Item 11, 12 : [@keisukefukuda](https://twitter.com/keisukefukuda), [Item 11, 12](http://www.slideshare.net/KeisukeFukuda/effective-modern-c2-item1011)
 
 ### 疑問やコメントなど(随時思い出したら書く)
