@@ -15,7 +15,13 @@
 
 * Item 7, 8 : [@Talos208](https://twitter.com/Talos208)
 * Item 9, 10 : [@uchan_nos](https://twitter.com/uchan_nos), [Item 9, 10](http://www.slideshare.net/uchan_nos/effective-modern-c-2pptx)
-* Item 11, 12 : [@keisukefukuda](https://twitter.com/keisukefukuda), [Item 11, 12](http://www.slideshare.net/KeisukeFukuda/effective-modern-c2-item1011)
+* Item 11 : [@keisukefukuda](https://twitter.com/keisukefukuda), [Item 11](http://www.slideshare.net/KeisukeFukuda/effective-modern-c2-item1011)
+
+### [第3回 2015/2/25](https://atnd.org/events/62014)
+
+* Item 7, 8 : [@Talos208](https://twitter.com/Talos208)
+* Item 9, 10 : [@uchan_nos](https://twitter.com/uchan_nos), [Item 9, 10](http://www.slideshare.net/uchan_nos/effective-modern-c-2pptx)
+* Item 11 : [@keisukefukuda](https://twitter.com/keisukefukuda), [Item 11](http://www.slideshare.net/KeisukeFukuda/effective-modern-c2-item1011)
 
 ### 疑問やコメントなど(随時思い出したら書く)
 
@@ -84,3 +90,72 @@ Ref dstr
 ### std::vector<T>::size_typeはsize_tで受けてよいのか?
 
 問題になるとは思えないがどこかで保証してる?
+
+### Item 7
+
+* `{}`のメリット
+    * 適用可能なケースが多い
+    * 間違えてnarrowingしてしまう可能性が低い
+    * Most Vexing Parse(変数宣言が関数のプロトタイプになってしまうやつ)の心配がない
+* `()`のメリット
+    * C++98の文法と互換
+    * initializer_listに関する問題がない
+
+templateの中で一次オブジェクトを作るとき、`{}`と`()`のどちらを使っているかドキュメントに書かないと利用する人はわからないことがある。
+[item7-3.cpp](https://github.com/herumi/emcjp/blob/master/src/item7-3.cpp)
+
+### Item 8
+整数型とポインタのオーバーロードは止めよう
+
+### Item 9
+
+typedef vs. using
+* usingはtemplate化が可能。使うときは`typename`は要らない。`::type`も要らない。
+    * typedefのときはdependent type
+    * usingはnon-dependent type
+    * C++14ではremove_constなどに_tバージョンが追加された。
+    * [本家eratta 1/25/15 tyk All](http://www.aristeia.com/BookErrata/emc++-errata.html)にtypedefよりalias templateがよい例が載ってる。
+
+Q. alias templateは特殊化できないけどどうなんだ。→ templateクラスのラップ
+* 元のクラスの特殊化と区別できないからしかたない?
+* 使う人からするとそんなことを気にせず特殊化したい?
+
+### Item 10
+enum Class使え。
+
+Visual Studioでは
+```
+enum X {
+   x = 1234567890123ull
+};
+```
+は32bitを超えた部分が切り捨てられる。
+```
+enum class X:long long {
+    x = 1234567890123ull
+};
+```
+ならOK。
+
+### Item 11
+* 代入演算子を使えなくするにはprivateじゃなくて`= delete`の方がいい。
+* `= delete`はprivateじゃなくてpublicに書く方がいい。
+    * コンパイラはdeletedかどうかより先にaccessibilityをチェックするため。
+
+普通の関数でも`= delete`は使える。
+templateでdefault deleteにして使いたいのだけ特殊化、あるいはオーバーロードする。
+```
+#include <stdio.h>
+template <typename T>
+void f(T) = delete;
+
+void f(int) { puts("int"); }
+
+int main()
+{
+    f(3);
+    f('a'); // deleteがないとintにmatchしてしまう。
+}
+
+```
+* char32_tなどは予約語なので`std::`は要らない(erattaに連絡済み)。
