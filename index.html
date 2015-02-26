@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>emcjp by herumi</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>emcjp</h1>
+        <h2></h2>
+        <a href="https://github.com/herumi/emcjp" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="effective-modern-c勉強会" class="anchor" href="#effective-modern-c%E5%8B%89%E5%BC%B7%E4%BC%9A" aria-hidden="true"><span class="octicon octicon-link"></span></a>Effective Modern C++勉強会</h1>
+
+<h2>
+<a id="資料置き場" class="anchor" href="#%E8%B3%87%E6%96%99%E7%BD%AE%E3%81%8D%E5%A0%B4" aria-hidden="true"><span class="octicon octicon-link"></span></a>資料置き場</h2>
+
+<h3>
+<a id="本家eratta" class="anchor" href="#%E6%9C%AC%E5%AE%B6eratta" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="http://www.aristeia.com/BookErrata/emc++-errata.html">本家eratta</a>
+</h3>
+
+<h3>
+<a id="第1回-2015128" class="anchor" href="#%E7%AC%AC1%E5%9B%9E-2015128" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://atnd.org/events/60511">第1回 2015/1/28</a>
+</h3>
+
+<ul>
+<li>Item 1, 2 : <a href="https://twitter.com/herumi">@herumi</a>, <a href="http://www.slideshare.net/herumi/template-44013078">templateとautoの型推論</a>
+</li>
+<li>Item 3, 4 : <a href="https://twitter.com/starpoz">@starpoz</a>, <a href="http://www.slideshare.net/starpos/effective-modern-c-1-item34">Item 3, 4</a>
+</li>
+<li>Item 5, 6 : <a href="https://twitter.com/redboltz">@redboltz</a>, <a href="http://www.slideshare.net/taka111/emcpp0506">Item 5, 6</a>
+</li>
+</ul>
+
+<h3>
+<a id="第2回-2015225" class="anchor" href="#%E7%AC%AC2%E5%9B%9E-2015225" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://atnd.org/events/62014">第2回 2015/2/25</a>
+</h3>
+
+<ul>
+<li>Item 7, 8 : <a href="https://twitter.com/Talos208">@Talos208</a>
+</li>
+<li>Item 9, 10 : <a href="https://twitter.com/uchan_nos">@uchan_nos</a>, <a href="http://www.slideshare.net/uchan_nos/effective-modern-c-2pptx">Item 9, 10</a>
+</li>
+<li>Item 11, 12 : <a href="https://twitter.com/keisukefukuda">@keisukefukuda</a>, <a href="http://www.slideshare.net/KeisukeFukuda/effective-modern-c2-item1011">Item 11, 12</a>
+</li>
+</ul>
+
+<h3>
+<a id="疑問やコメントなど随時思い出したら書く" class="anchor" href="#%E7%96%91%E5%95%8F%E3%82%84%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%81%AA%E3%81%A9%E9%9A%8F%E6%99%82%E6%80%9D%E3%81%84%E5%87%BA%E3%81%97%E3%81%9F%E3%82%89%E6%9B%B8%E3%81%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>疑問やコメントなど(随時思い出したら書く)</h3>
+
+<h3>
+<a id="item-1-p12の" class="anchor" href="#item-1-p12%E3%81%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>Item 1 p.12の</h3>
+
+<blockquote>
+<p>These examples all show lvalue reference parameters, but
+type deduction works exactly the same way for rvalue reference parameters.</p>
+</blockquote>
+
+<p>の意味が分からない。<a href="misc/mail.md">テキストの間違い</a></p>
+
+<h3>
+<a id="item-2のauto-a3がinitializer_listになるのは気持ち悪い" class="anchor" href="#item-2%E3%81%AEauto-a3%E3%81%8Cinitializer_list%E3%81%AB%E3%81%AA%E3%82%8B%E3%81%AE%E3%81%AF%E6%B0%97%E6%8C%81%E3%81%A1%E6%82%AA%E3%81%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>Item 2のauto a{3}がinitializer_listになるのは気持ち悪い。</h3>
+
+<p>C++17で仕様変更された(by <a href="https://twitter.com/pepshiso/status/560384555257851904">@pepshiso</a>)。
+<a href="http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n3922.html">New Rules for auto deduction from braced-init-list</a></p>
+
+<pre><code>                 // C++11, C++14    C++17
+auto x = {1};    // 初期化リスト    初期化リスト
+auto x = {1, 2}; // 初期化リスト    初期化リスト
+auto x{1};       // 初期化リスト    int
+auto x{1, 2};    // 初期化リスト    error
+</code></pre>
+
+<h3>
+<a id="item-3のdecltypexとdecltypexで意味が変わる例" class="anchor" href="#item-3%E3%81%AEdecltypex%E3%81%A8decltypex%E3%81%A7%E6%84%8F%E5%91%B3%E3%81%8C%E5%A4%89%E3%82%8F%E3%82%8B%E4%BE%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>Item 3のdecltype(x)とdecltype((x))で意味が変わる例</h3>
+
+<pre><code>// C++14 only
+decltype(auto) f2()
+{
+    static int x = 0;
+    return (x); // ここをreturn xにするとコンパイルエラーになる。
+}
+
+int main()
+{
+    printf("f2()=%d\n", f2());
+    f2() = 3;
+    printf("f2()=%d\n", f2());
+}
+</code></pre>
+
+<h3>
+<a id="item-6のvectorのoperatorをautoで受けると駄目な話" class="anchor" href="#item-6%E3%81%AEvector%E3%81%AEoperator%E3%82%92auto%E3%81%A7%E5%8F%97%E3%81%91%E3%82%8B%E3%81%A8%E9%A7%84%E7%9B%AE%E3%81%AA%E8%A9%B1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Item 6のvectorのoperatorをautoで受けると駄目な話。</h3>
+
+<p><a href="https://github.com/herumi/emcjp/blob/master/src/item6-1.cpp">item6-1.cpp</a>
+VecがintではなくRefを返す。
+intで受けるとRef()からintに変換されてから一時オブジェクトのVecとRefが消滅する。</p>
+
+<p>autoで受けるとRef()のままになり、Refの寿命はあるけどそれが参照しているVecは先に消滅するのでそのあとintに変換するとアウト。</p>
+
+<pre><code>use int
+Vec cstr
+Ref cstr
+read x
+Ref dstr
+Vec dstr
+type=int a=5
+use auto
+Vec cstr
+Ref cstr
+Vec dstr
+read x
+type=struct Ref a=5
+Ref dstr
+</code></pre>
+
+<h3>
+<a id="stdvectorsize_typeはsize_tで受けてよいのか" class="anchor" href="#stdvectorsize_type%E3%81%AFsize_t%E3%81%A7%E5%8F%97%E3%81%91%E3%81%A6%E3%82%88%E3%81%84%E3%81%AE%E3%81%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>std::vector::size_typeはsize_tで受けてよいのか?</h3>
+
+<p>問題になるとは思えないがどこかで保証してる?</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/herumi/emcjp/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/herumi/emcjp/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/herumi/emcjp"></a> is maintained by <a href="https://github.com/herumi">herumi</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
