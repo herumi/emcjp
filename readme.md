@@ -7,21 +7,21 @@
 
 ### [第1回 2015/1/28](https://atnd.org/events/60511)
 
-* Item 1, 2 : [@herumi](https://twitter.com/herumi), [templateとautoの型推論](http://www.slideshare.net/herumi/template-44013078)
-* Item 3, 4 : [@starpoz](https://twitter.com/starpoz), [Item 3, 4](http://www.slideshare.net/starpos/effective-modern-c-1-item34)
-* Item 5, 6 : [@redboltz](https://twitter.com/redboltz), [Item 5, 6](http://www.slideshare.net/taka111/emcpp0506)
+* [Item 1, 2](http://www.slideshare.net/herumi/template-44013078) : [@herumi](https://twitter.com/herumi)
+* [Item 3, 4](http://www.slideshare.net/starpos/effective-modern-c-1-item34) : [@starpoz](https://twitter.com/starpoz)
+* [Item 5, 6](http://www.slideshare.net/taka111/emcpp0506) : [@redboltz](https://twitter.com/redboltz)
 
 ### [第2回 2015/2/25](https://atnd.org/events/62014)
 
 * Item 7, 8 : [@Talos208](https://twitter.com/Talos208)
-* Item 9, 10 : [@uchan_nos](https://twitter.com/uchan_nos), [Item 9, 10](http://www.slideshare.net/uchan_nos/effective-modern-c-2pptx)
-* Item 11 : [@keisukefukuda](https://twitter.com/keisukefukuda), [Item 11](http://www.slideshare.net/KeisukeFukuda/effective-modern-c2-item1011)
+* [Item 9, 10](http://www.slideshare.net/uchan_nos/effective-modern-c-2pptx) : [@uchan_nos](https://twitter.com/uchan_nos)
+* [Item 11](http://www.slideshare.net/KeisukeFukuda/effective-modern-c2-item1011) : [@keisukefukuda](https://twitter.com/keisukefukuda)
 
-### [第3回 2015/2/25](https://atnd.org/events/62014)
+### [第3回 2015/3/25](https://atnd.org/events/63259)
 
-* Item 7, 8 : [@Talos208](https://twitter.com/Talos208)
-* Item 9, 10 : [@uchan_nos](https://twitter.com/uchan_nos), [Item 9, 10](http://www.slideshare.net/uchan_nos/effective-modern-c-2pptx)
-* Item 11 : [@keisukefukuda](https://twitter.com/keisukefukuda), [Item 11](http://www.slideshare.net/KeisukeFukuda/effective-modern-c2-item1011)
+* Item 12続き : [@keisukefukuda](https://twitter.com/keisukefukuda)
+* Item 13, 14 : [@pepshiso](https://twitter.com/pepshiso)
+* Item 15, 16 : [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
 
 ### 疑問やコメントなど(随時思い出したら書く)
 
