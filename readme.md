@@ -21,7 +21,13 @@
 
 * [Item 12](http://www.slideshare.net/KeisukeFukuda/effective-modern-c-3) : [@keisukefukuda](https://twitter.com/keisukefukuda)
 * Item 13, 14 : [@pepshiso](https://twitter.com/pepshiso)
-* Item 15] : [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
+* Item 15 : [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
+
+### [第4回 2015/4/22](https://atnd.org/events/63259)
+
+* Item 16 [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
+* Item 17, 18 : [@rigarash](https://twitter.com/rigarash)
+* Item 19, 20 : [@linda_pp](https://twitter.com/linda_pp)
 
 ### 疑問やコメントなど(随時思い出したら書く)
 
