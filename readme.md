@@ -114,3 +114,22 @@ cstr
 ただし今のところこの最適化はgccのみ。clang(-3.7)では変わらない。
 
 ### Item 15
+* 可能ならconstexprを使え。
+* メンバ関数のconstexprにはconstもつけること(C++14で挙動が変わる)。
+* setterにconstexprをつけるとよいことがある。
+
+```
+#include <utility>
+#include <stdio.h>
+
+struct A {
+    static constexpr std::pair<int,int> p{3,5};
+};
+
+int main()
+{
+    printf("A::p.first=%d\n", A::p.first);
+}
+```
+がgccでエラーになるのはバグ? コードが悪い?
+=> 多分バグ
