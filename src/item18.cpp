@@ -11,13 +11,23 @@ struct B : A {
 	~B() { puts("B dstr"); }
 };
 
+auto delA0 = [](A* p) {
+	printf("delA0 %p\n", p);
+	delete p;
+};
+
+void delA1(A* p)
+{
+	printf("delA1 %p\n", p);
+	delete p;
+}
+
 int main()
 {
-	auto delA = [](A* p) {
-		printf("delete %p\n", p);
-		delete p;
-	};
-	std::unique_ptr<A, decltype(delA)> p(new A(), delA);
-	std::unique_ptr<A, decltype(delA)> q(nullptr, delA);
+	std::unique_ptr<A, decltype(delA0)> p(new A(), delA0);
+	std::unique_ptr<A, decltype(delA0)> q(nullptr, delA0);
 	q.reset(new B());
+	printf("sizeof p=%d\n", (int)sizeof(p)); // 8
+	std::unique_ptr<A, void (*)(A*)> r(new A(), delA1);
+	printf("sizeof r=%d\n", (int)sizeof(r)); // 16
 }
