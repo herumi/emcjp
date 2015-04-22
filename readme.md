@@ -27,7 +27,7 @@
 
 * Item 16 [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
 * Item 17, 18 : [@rigarash](https://twitter.com/rigarash)
-* Item 19, 20 : [@linda_pp](https://twitter.com/linda_pp)
+* [Item 19, 20](https://speakerdeck.com/rhysd/effective-modern-c-plus-plus-item19-item20) : [@linda_pp](https://twitter.com/linda_pp)
 
 ### 疑問やコメントなど(随時思い出したら書く)
 
