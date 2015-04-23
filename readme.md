@@ -20,6 +20,7 @@
 ### [第3回 2015/3/25](https://atnd.org/events/63259)
 
 * [Item 12](http://www.slideshare.net/KeisukeFukuda/effective-modern-c-3) : [@keisukefukuda](https://twitter.com/keisukefukuda)
+    - [blog](http://freak-da.hatenablog.com/entries/2015/03/26)
 * Item 13, 14 : [@pepshiso](https://twitter.com/pepshiso)
 * Item 15 : [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
 
@@ -28,6 +29,13 @@
 * Item 16 [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
 * Item 17, 18 : [@rigarash](https://twitter.com/rigarash)
 * [Item 19, 20](https://speakerdeck.com/rhysd/effective-modern-c-plus-plus-item19-item20) : [@linda_pp](https://twitter.com/linda_pp)
+
+### [第5回 2015/5/20](https://atnd.org/events/65442)
+
+* Item 21 [@herumi](https://twitter.com/herumi)
+* Item 22 [@keisukefukuda](https://twitter.com/keisukefukuda)
+* Item 23 [@uchan_nos](https://twitter.com/uchan_nos)
+* Item 24 [@mooopan](https://twitter.com/mooopan)
 
 ### 疑問やコメントなど(随時思い出したら書く)
 
@@ -133,3 +141,44 @@ int main()
 ```
 がgccでエラーになるのはバグ? コードが悪い?
 => 多分バグ
+
+### Item 16
+constメンバ関数はthread safeにすべき。
+
+### Item 17
+特殊なメンバ関数の自動生成を理解する。
+moveされることを期待するならちゃんと書く。
+自明なdstrを定義すると暗黙のmoveはcopyになってしまうので注意する。
+### Item 18
+auto_ptrの代わりにunique_ptrを使う。
+カスタムdeleterは関数よりlambdaの方が効率がよい。
+
+* Q. socketやfile descriptorなどはポインタ型でないのでshared_ptrとか使いにくい。
+* A. see [Resource Management with Explicit Template Specializations](http://accu.org/index.php/journals/2086)
+
+### Item 19
+共有リソースの管理にはshared_ptrを使う。
+[Cryoliteさんの昔の解説記事](http://d.hatena.ne.jp/Cryolite/20060108)
+* すぐ戻ってくる関数で使うならcopyよりmoveの方が参照カウンタが増えないのでいい。
+* shared_ptrで確保したインスタンスのthisを別のshared_ptrに渡してはいけない。
+    - enable_shared_from_thisを継承してshared_from_thisを使う。
+### Item 20
+ちゅうぶらりん(dangling)になるかもしれないshared_ptrに対してはweak_ptrを使う。
+
+```
+auto s = std::make_shared<A>();
+std::weak_ptr<A> w(s);
+
+if (w.expired()) {
+  ... /// XXX
+}
+```
+この方法だとw.expired()がtrueでもXXXの時点で
+sが他のスレッドで解放されてfalseになってるかもしれないので使うべきではない。
+
+```
+if (auto p = w.lock()) {
+  ...
+}
+```
+の形だとshared_ptrへの変換と判定がatomicに行われるのでよい。
