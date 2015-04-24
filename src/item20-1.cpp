@@ -8,7 +8,7 @@ struct A {
 	void put() const { printf("a=%d\n", a); }
 };
 
-void testAndPut(const std::weak_ptr<A>& w)
+void testAndPut(const std::weak_ptr<const A>& w)
 {
 	puts("testAndPut");
 	if (auto p = w.lock()) {
@@ -22,7 +22,7 @@ int main()
 {
 	auto s = std::make_shared<A>(3);
 	s->put();
-	std::weak_ptr<A> w = s;
+	std::weak_ptr<const A> w = s;
 	testAndPut(w);
 	puts("s.reset()");
 	s.reset();
