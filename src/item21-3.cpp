@@ -1,3 +1,4 @@
+// cl item21-3.cpp /MT
 #include <memory>
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,6 +43,6 @@ int main()
 		f();
 	}
 	for (int i = 0; i < pos; i++) {
-		printf("%d %zd\n", i, mem[i].size);
+		printf("%d %d\n", i, (int)mem[i].size);
 	}
 }
