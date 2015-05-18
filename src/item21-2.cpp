@@ -24,13 +24,9 @@ struct C {
 };
 
 #ifdef USE_MAKE_UNIQUE
-template<class T, class... Args>
-std::unique_ptr<T> make_unique(Args&&... args) {
-    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
-}
 
 struct D {
-	D() : a(make_unique<A>()) , b(make_unique<B>()) { }
+	D() : a(new A()) , b(new B()) { }
 	std::unique_ptr<A> a;
 	std::unique_ptr<B> b;
 };
