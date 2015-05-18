@@ -61,10 +61,29 @@ void f()
 #endif
 }
 
+#ifdef USE_MAKE_UNIQUE
+template<class T, class... Args>
+std::unique_ptr<T> make_unique(Args&&... args) {
+    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+}
+#endif
+
+void g()
+{
+#ifdef USE_MAKE_UNIQUE
+	auto p = make_unique<A>();
+#else
+	std::unique_ptr<A> p(new A());
+#endif
+}
+
 int main()
 {
 	for (int i = 0; i < 3; i++) {
 		f();
+	}
+	for (int i = 0; i < 3; i++) {
+		g();
 	}
 	for (int i = 0; i < pos; i++) {
 		printf("%d %d\n", i, (int)mem[i].size);
