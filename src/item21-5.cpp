@@ -19,12 +19,16 @@ struct A {
 int main()
 {
 	{
-		puts("p");
+		puts("new");
 		A *p = new A();
 		delete p;
 	}
 	{
-		puts("q");
-		auto q = std::make_shared<A>();
+		puts("shared_ptr");
+		auto p = std::shared_ptr<A>(new A());
+	}
+	{
+		puts("make_shared");
+		auto p = std::make_shared<A>();
 	}
 }
