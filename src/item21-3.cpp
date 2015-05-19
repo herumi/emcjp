@@ -40,7 +40,7 @@ extern "C" void *malloc(size_t n) throw()
 		exit(1);
 	}
 	mem[pos].size = n;
-	printf("malloc %p %d\n", mem[pos].buf, (int)n);
+//	printf("malloc %p %d\n", mem[pos].buf, (int)n);
 	return mem[pos++].buf;
 }
 extern "C" void free(void *p) throw()
@@ -88,6 +88,6 @@ int main()
 		g();
 	}
 	for (int i = 0; i < pos; i++) {
-		printf("%d %d\n", i, (int)mem[i].size);
+		printf("%d %d %p\n", i, (int)mem[i].size, mem[i].buf);
 	}
 }
