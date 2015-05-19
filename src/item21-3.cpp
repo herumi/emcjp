@@ -33,20 +33,20 @@ static struct Mmem {
 	size_t size;
 } mem[4096];
 
-extern "C" void *malloc(size_t n) throw()
+void* operator new(size_t n)
 {
 	if (n >= 8192) {
 		puts("ERR");
 		exit(1);
 	}
 	mem[pos].size = n;
-//	printf("malloc %p %d\n", mem[pos].buf, (int)n);
+	printf("new %p %d\n", mem[pos].buf, (int)n);
 	return mem[pos++].buf;
 }
-extern "C" void free(void *p) throw()
+void operator delete(void *p)
 {
 	if (p == 0) return;
-	printf("free %p\n", p);
+	printf("delete %p\n", p);
 }
 
 struct A {
@@ -79,6 +79,48 @@ void g()
 #endif
 }
 
+struct L {
+	int a[1024];
+};
+
+void lifetimeMain(std::shared_ptr<L> p)
+{
+	puts("new by shared_ptr");
+	printf("use_count=%d\n", (int)p.use_count());
+	std::weak_ptr<L> w1;
+	std::weak_ptr<L> w2;
+	{
+		puts("shared q");
+		auto q = std::move(p);
+		puts("ref by weak");
+		w1 = q;
+		w2 = q;
+		puts("reset q");
+		q.reset();
+		puts("reset weak");
+		w1.reset();
+		w2.reset();
+		puts("end of q");
+	}
+	puts("shared end");
+}
+
+void lifetimeShared()
+{
+	puts("----------------");
+	puts("new by shared_ptr");
+	auto p = std::shared_ptr<L>(new L());
+	lifetimeMain(std::move(p));
+}
+
+void lifetimeMake()
+{
+	puts("----------------");
+	puts("new by make_shared");
+	auto p = std::make_shared<L>();
+	lifetimeMain(std::move(p));
+}
+
 int main()
 {
 	for (int i = 0; i < 3; i++) {
@@ -87,7 +129,6 @@ int main()
 	for (int i = 0; i < 3; i++) {
 		g();
 	}
-	for (int i = 0; i < pos; i++) {
-		printf("%d %d %p\n", i, (int)mem[i].size, mem[i].buf);
-	}
+	lifetimeShared();
+	lifetimeMake();
 }
