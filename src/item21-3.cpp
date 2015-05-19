@@ -40,6 +40,7 @@ extern "C" void *malloc(size_t n) throw()
 		exit(1);
 	}
 	mem[pos].size = n;
+	printf("malloc %p %d\n", mem[pos].buf, (int)n);
 	return mem[pos++].buf;
 }
 extern "C" void free(void *p) throw()
@@ -59,6 +60,7 @@ void f()
 #else
 	std::shared_ptr<A> p(new A());
 #endif
+	printf("p=%p\n", &*p);
 }
 
 #ifdef USE_MAKE_UNIQUE
