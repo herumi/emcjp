@@ -32,115 +32,23 @@
 
 ### [第5回 2015/5/20](https://atnd.org/events/65442)
 
-* Item 21 [@herumi](https://twitter.com/herumi)
-* Item 22 [@keisukefukuda](https://twitter.com/keisukefukuda)
+* [Item 21](http://www.slideshare.net/herumi/emcjp-item21) [@herumi](https://twitter.com/herumi)
+* [Item 22](http://www.slideshare.net/KeisukeFukuda/effective-modern-c-item-22) [@keisukefukuda](https://twitter.com/keisukefukuda)
 * Item 23 [@uchan_nos](https://twitter.com/uchan_nos)
 * Item 24 [@mooopan](https://twitter.com/mooopan)
+
+### [第6回 2015/6/17]()
+
+* Item 25 [@starpoz](https://twitter.com/starpoz)
+* Item 26 [@regenschauer490](https://twitter.com/regenschauer490)
+* Item 27 [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
+* Item 28 [@redboltz](https://twitter.com/redboltz)
 
 ### 疑問やコメントなど(随時思い出したら書く)
 
 ### 以前
 
 [memo.md](memo.md)
-
-### Item 12
-override使う。
-gccでは-Wall, -Wextraの他に-Woverloaded-vitrualが必要
-
-メンバ関数のreference qualifierのメリットの例
-
-`a + b = 3`を防げる。
-```
-struct X {
-    friend inline X operator+(const X&, const X&) { return X(); }
-    X& operator=(int) { return *this; }
-    X& operator=(const char*) & { return *this; }
-};
-
-int main()
-{
-    X a, b;
-    a + b = 3;   // 通ってしまう
-    a + b = "a"; // &がついてるとエラーにできる
-}
-```
-
-reference qualifierをつけまくったときでgccがambigiousでエラーになるのは4.9.1から直ってました。
-[item12-1.cpp](src/item12-1.cpp)
-
-### Item 13
-C++03はconst_iteratorは冷遇されていた。C++11からはcbegin, cendを使う。
-C++14からはグローバル関数のcbegin, cendを使う。
-### Item 14
-スタックの巻き戻しに必要なコードを減らせるため可能ならthrow()よりもnoexceptを使う。
-```
-#include <exception>
-#include <stdio.h>
-
-struct A {
-    A() { puts("cstr"); }
-    ~A() { puts("dstr"); }
-};
-
-void f_noexcept() noexcept {
-    A a;
-    throw 1;
-}
-
-void f_nothrow() throw() {
-    A a;
-    throw 1;
-}
-
-int main()
-{
-#ifdef NOEXCEPT
-    puts("noexcept");
-    f_noexcept();
-#else
-    puts("throw()");
-    f_nothrow();
-#endif
-}
-```
-throw()版なら
-```
-terminate called after throwing an instance of 'int'
-
-noexcept
-cstr
-dstr
-```
-dstrが呼ばれてからstd::unexpected()が呼ばれ、それがstd::terminate()になっている。
-noexceptならdstrを呼ばずに即座にstd::terminate()を呼ぶ。
-```
-terminate called after throwing an instance of 'int'
-
-noexcept
-cstr
-```
-ただし今のところこの最適化はgccのみ。clang(-3.7)では変わらない。
-
-### Item 15
-* 可能ならconstexprを使え。
-* メンバ関数のconstexprにはconstもつけること(C++14で挙動が変わる)。
-* setterにconstexprをつけるとよいことがある。
-
-```
-#include <utility>
-#include <stdio.h>
-
-struct A {
-    static constexpr std::pair<int,int> p{3,5};
-};
-
-int main()
-{
-    printf("A::p.first=%d\n", A::p.first);
-}
-```
-がgccでエラーになるのはバグ? コードが悪い?
-=> 多分バグ
 
 ### Item 16
 constメンバ関数はthread safeにすべき。
@@ -182,3 +90,68 @@ if (auto p = w.lock()) {
 }
 ```
 の形だとshared_ptrへの変換と判定がatomicに行われるのでよい。
+
+### Item 21
+
+unique_ptrやshared_ptrよりはmake_unique(from C++14)やmake_sharedを使おう。
+ただしmake_sharedはいろいろ罠があるので気をつける。
+make_shared<T>を使うとT::operator newが呼ばれないのはもっと明記した方がよいような。
+
+Q. use_count()の戻り値がsize_tではなくlongなのはなぜ? boostのときからそうだけど。
+
+### Item 22
+pImplの実装にunique_ptrを使う。
+cppに特殊メンバ関数をきちんと書かなければならない。
+pImplがnullptrになっているとき(自分自身もrhsも)を考慮したcopy cstrやoperator=を書く必要がある。
+
+たとえば
+```
+std::string a = "abc";
+std::string b(std::move(a));
+```
+したとき、`a.c_str()`の値は未規定(unspecified)ではあるが、`valid state`ではあるのでsegvしてはいけない。
+valid stateってなんだよという疑問はあるが。
+本は間違ってるので注意(最新版pdfでは修正されているらしい)。
+たとえばこんな感じ。
+```
+class A {
+    ....
+private:
+    struct Impl;
+    std::unique_ptr<Impl> pImpl_;
+};
+
+A::A(const A& rhs)
+    : pImpl_(std::unique_ptr<Impl>(rhs.pImpl_ ? new Impl(*rhs.pImpl_) : new Impl()))
+{
+}
+
+A& A::operator=(const A& rhs)
+{
+    if (rhs.pImpl_) {
+        if (pImpl_) {
+            *pImpl_ = *rhs.pImpl_;
+        } else {
+            pImpl_.reset(new Impl(*rhs.pImpl_));
+        }
+    } else {
+        pImpl_.reset();
+    }
+    return *this;
+}
+```
+そのあたりはmake_sharedを使うと楽になるよと書いてあるが、make_sharedを使うとインスタンスは共有されるので元のクラスの意味と違ってしまうので要注意(こちらも最新pdfでは記載されているらしい)。
+
+### Item 23
+
+std::moveやstd::forwardは単なるremove_reference_t<T>&&へのキャスト。
+std::moveはTの型を明示しなくてよいがstd::forwardは明示する必要がある。
+
+Q. std::moveをconst T&&に対してエラーするのはどうか。
+
+### Item 24
+template<class T>void f(T&& param)やauto&&などの型推論が行われるところでのみ
+T&&は右辺値にも左辺値にも束縛される可能性がある。
+* lvalueで初期化するとlvalue referenceになる。
+* rvalueで初期化するとrvalue referenceになる。
+著者はuniversal referenceという言葉を推している。

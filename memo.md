@@ -132,3 +132,102 @@ int main()
 
 ```
 * char32_tなどは予約語なので`std::`は要らない(erattaに連絡済み)。
+
+### Item 12
+override使う。
+gccでは-Wall, -Wextraの他に-Woverloaded-vitrualが必要
+
+メンバ関数のreference qualifierのメリットの例
+
+`a + b = 3`を防げる。
+```
+struct X {
+    friend inline X operator+(const X&, const X&) { return X(); }
+    X& operator=(int) { return *this; }
+    X& operator=(const char*) & { return *this; }
+};
+
+int main()
+{
+    X a, b;
+    a + b = 3;   // 通ってしまう
+    a + b = "a"; // &がついてるとエラーにできる
+}
+```
+
+reference qualifierをつけまくったときでgccがambigiousでエラーになるのは4.9.1から直ってました。
+[item12-1.cpp](src/item12-1.cpp)
+
+### Item 13
+C++03はconst_iteratorは冷遇されていた。C++11からはcbegin, cendを使う。
+C++14からはグローバル関数のcbegin, cendを使う。
+### Item 14
+スタックの巻き戻しに必要なコードを減らせるため可能ならthrow()よりもnoexceptを使う。
+```
+#include <exception>
+#include <stdio.h>
+
+struct A {
+    A() { puts("cstr"); }
+    ~A() { puts("dstr"); }
+};
+
+void f_noexcept() noexcept {
+    A a;
+    throw 1;
+}
+
+void f_nothrow() throw() {
+    A a;
+    throw 1;
+}
+
+int main()
+{
+#ifdef NOEXCEPT
+    puts("noexcept");
+    f_noexcept();
+#else
+    puts("throw()");
+    f_nothrow();
+#endif
+}
+```
+throw()版なら
+```
+terminate called after throwing an instance of 'int'
+
+noexcept
+cstr
+dstr
+```
+dstrが呼ばれてからstd::unexpected()が呼ばれ、それがstd::terminate()になっている。
+noexceptならdstrを呼ばずに即座にstd::terminate()を呼ぶ。
+```
+terminate called after throwing an instance of 'int'
+
+noexcept
+cstr
+```
+ただし今のところこの最適化はgccのみ。clang(-3.7)では変わらない。
+
+### Item 15
+* 可能ならconstexprを使え。
+* メンバ関数のconstexprにはconstもつけること(C++14で挙動が変わる)。
+* setterにconstexprをつけるとよいことがある。
+
+```
+#include <utility>
+#include <stdio.h>
+
+struct A {
+    static constexpr std::pair<int,int> p{3,5};
+};
+
+int main()
+{
+    printf("A::p.first=%d\n", A::p.first);
+}
+```
+がgccでエラーになるのはバグ? コードが悪い?
+=> 多分バグ
