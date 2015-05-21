@@ -37,7 +37,7 @@
 * Item 23 [@uchan_nos](https://twitter.com/uchan_nos)
 * Item 24 [@mooopan](https://twitter.com/mooopan)
 
-### [第6回 2015/6/17]()
+### [第6回 2015/6/17](https://atnd.org/events/66415)
 
 * Item 25 [@starpoz](https://twitter.com/starpoz)
 * Item 26 [@regenschauer490](https://twitter.com/regenschauer490)
