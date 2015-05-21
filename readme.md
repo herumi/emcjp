@@ -7,19 +7,19 @@
 
 ### [第1回 2015/1/28](https://atnd.org/events/60511)
 
-* [Item 1, 2](http://www.slideshare.net/herumi/template-44013078) : [@herumi](https://twitter.com/herumi)
-* [Item 3, 4](http://www.slideshare.net/starpos/effective-modern-c-1-item34) : [@starpoz](https://twitter.com/starpoz)
-* [Item 5, 6](http://www.slideshare.net/taka111/emcpp0506) : [@redboltz](https://twitter.com/redboltz)
+* [Item 1, 2の資料](http://www.slideshare.net/herumi/template-44013078) : [@herumi](https://twitter.com/herumi)
+* [Item 3, 4の資料](http://www.slideshare.net/starpos/effective-modern-c-1-item34) : [@starpoz](https://twitter.com/starpoz)
+* [Item 5, 6の資料](http://www.slideshare.net/taka111/emcpp0506) : [@redboltz](https://twitter.com/redboltz)
 
 ### [第2回 2015/2/25](https://atnd.org/events/62014)
 
 * Item 7, 8 : [@Talos208](https://twitter.com/Talos208)
-* [Item 9, 10](http://www.slideshare.net/uchan_nos/effective-modern-c-2pptx) : [@uchan_nos](https://twitter.com/uchan_nos)
-* [Item 11](http://www.slideshare.net/KeisukeFukuda/effective-modern-c2-item1011) : [@keisukefukuda](https://twitter.com/keisukefukuda)
+* [Item 9, 10の資料](http://www.slideshare.net/uchan_nos/effective-modern-c-2pptx) : [@uchan_nos](https://twitter.com/uchan_nos)
+* [Item 11の資料](http://www.slideshare.net/KeisukeFukuda/effective-modern-c2-item1011) : [@keisukefukuda](https://twitter.com/keisukefukuda)
 
 ### [第3回 2015/3/25](https://atnd.org/events/63259)
 
-* [Item 12](http://www.slideshare.net/KeisukeFukuda/effective-modern-c-3) : [@keisukefukuda](https://twitter.com/keisukefukuda)
+* [Item 12の資料](http://www.slideshare.net/KeisukeFukuda/effective-modern-c-3) : [@keisukefukuda](https://twitter.com/keisukefukuda)
     - [blog](http://freak-da.hatenablog.com/entries/2015/03/26)
 * Item 13, 14 : [@pepshiso](https://twitter.com/pepshiso)
 * Item 15 : [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
@@ -27,15 +27,15 @@
 ### [第4回 2015/4/22](https://atnd.org/events/64371)
 
 * Item 16 [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
-* [Item 17, 18](http://www.slideshare.net/rigarash/effective-modern-c4-item-17-18) : [@rigarash](https://twitter.com/rigarash)
-* [Item 19, 20](https://speakerdeck.com/rhysd/effective-modern-c-plus-plus-item19-item20) : [@linda_pp](https://twitter.com/linda_pp)
+* [Item 17, 18の資料](http://www.slideshare.net/rigarash/effective-modern-c4-item-17-18) : [@rigarash](https://twitter.com/rigarash)
+* [Item 19, 20の資料](https://speakerdeck.com/rhysd/effective-modern-c-plus-plus-item19-item20) : [@linda_pp](https://twitter.com/linda_pp)
 
 ### [第5回 2015/5/20](https://atnd.org/events/65442)
 
-* [Item 21](http://www.slideshare.net/herumi/emcjp-item21) [@herumi](https://twitter.com/herumi)
-* [Item 22](http://www.slideshare.net/KeisukeFukuda/effective-modern-c-item-22) [@keisukefukuda](https://twitter.com/keisukefukuda)
-* Item 23 [@uchan_nos](https://twitter.com/uchan_nos)
-* Item 24 [@mooopan](https://twitter.com/mooopan)
+* [Item 21の資料](http://www.slideshare.net/herumi/emcjp-item21) [@herumi](https://twitter.com/herumi)
+* [Item 22の資料](http://www.slideshare.net/KeisukeFukuda/effective-modern-c-item-22) [@keisukefukuda](https://twitter.com/keisukefukuda)
+* [Item 23の資料](http://www.slideshare.net/uchan_nos/effective-modern-c-5) [@uchan_nos](https://twitter.com/uchan_nos)
+* [Item 24の資料](http://www.slideshare.net/mooopan/emc24) [@mooopan](https://twitter.com/mooopan)
 
 ### [第6回 2015/6/17](https://atnd.org/events/66415)
 
