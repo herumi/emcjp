@@ -231,3 +231,38 @@ int main()
 ```
 がgccでエラーになるのはバグ? コードが悪い?
 => 多分バグ
+
+### Item 19
+共有リソースの管理にはshared_ptrを使う。
+[Cryoliteさんの昔の解説記事](http://d.hatena.ne.jp/Cryolite/20060108)
+* すぐ戻ってくる関数で使うならcopyよりmoveの方が参照カウンタが増えないのでいい。
+* shared_ptrで確保したインスタンスのthisを別のshared_ptrに渡してはいけない。
+    - enable_shared_from_thisを継承してshared_from_thisを使う。
+### Item 20
+ちゅうぶらりん(dangling)になるかもしれないshared_ptrに対してはweak_ptrを使う。
+
+```
+auto s = std::make_shared<A>();
+std::weak_ptr<A> w(s);
+
+if (w.expired()) {
+  ... /// XXX
+}
+```
+この方法だとw.expired()がtrueでもXXXの時点で
+sが他のスレッドで解放されてfalseになってるかもしれないので使うべきではない。
+
+```
+if (auto p = w.lock()) {
+  ...
+}
+```
+の形だとshared_ptrへの変換と判定がatomicに行われるのでよい。
+
+### Item 21
+
+unique_ptrやshared_ptrよりはmake_unique(from C++14)やmake_sharedを使おう。
+ただしmake_sharedはいろいろ罠があるので気をつける。
+make_shared<T>を使うとT::operator newが呼ばれないのはもっと明記した方がよいような。
+
+Q. use_count()の戻り値がsize_tではなくlongなのはなぜ? boostのときからそうだけど。
