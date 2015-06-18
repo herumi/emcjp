@@ -44,6 +44,13 @@
 * Item 27 [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
 * Item 28 [@redboltz](https://twitter.com/redboltz)
 
+### [第7回 2015/7/15](https://atnd.org/events/67443)
+
+* Item 29, 30 : [@Linda_pp](https://twitter.com/Linda_pp)
+* Item 31 : [@MitsutakaTakeda](https://twitter.com/MitsutakaTakeda)
+* Item 32 : [@simizut22](https://twitter.com/simizut22)
+* Item 33 : [@herumi](https://twitter.com/herumi)
+
 ### 疑問やコメントなど(随時思い出したら書く)
 
 ### 以前
