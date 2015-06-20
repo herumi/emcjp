@@ -39,7 +39,7 @@
 
 ### [第6回 2015/6/17](https://atnd.org/events/66415)
 
-* Item 25 [@starpoz](https://twitter.com/starpoz)
+* [Item 25の資料](http://www.slideshare.net/starpos/effective-modern-c-6-item25) [@starpoz](https://twitter.com/starpoz)
 * [Item 26の資料](http://www.slideshare.net/barfoo102/emc-26) [@regenschauer490](https://twitter.com/regenschauer490)
 * Item 27 [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
 * Item 28 [@redboltz](https://twitter.com/redboltz)
