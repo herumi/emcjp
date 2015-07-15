@@ -51,6 +51,13 @@
 * Item 32 : [@simizut22](https://twitter.com/simizut22)
 * [Item 33, 34の資料](http://www.slideshare.net/herumi/emcjp-item3334) : [@herumi](https://twitter.com/herumi)
 
+### [第8回 2015/8/19](https://atnd.org/events/68406)
+
+* Item 35 : [@keisukefukuda](https://twitter.com/keisukefukuda)
+* Item 36 : [@simizut22](https://twitter.com/simizut22)
+* Item 37 : [@uchan_nos](https://twitter.com/uchan_nos)
+* Item 38 : [@starpoz](https://twitter.com/starpoz)
+
 ### 疑問やコメントなど(随時思い出したら書く)
 
 ### 以前
