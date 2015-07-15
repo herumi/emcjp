@@ -238,6 +238,7 @@ int main()
 * すぐ戻ってくる関数で使うならcopyよりmoveの方が参照カウンタが増えないのでいい。
 * shared_ptrで確保したインスタンスのthisを別のshared_ptrに渡してはいけない。
     - enable_shared_from_thisを継承してshared_from_thisを使う。
+
 ### Item 20
 ちゅうぶらりん(dangling)になるかもしれないshared_ptrに対してはweak_ptrを使う。
 
@@ -266,3 +267,67 @@ unique_ptrやshared_ptrよりはmake_unique(from C++14)やmake_sharedを使お�
 make_shared<T>を使うとT::operator newが呼ばれないのはもっと明記した方がよいような。
 
 Q. use_count()の戻り値がsize_tではなくlongなのはなぜ? boostのときからそうだけど。
+
+### Item 16
+constメンバ関数はthread safeにすべき。
+
+### Item 17
+特殊なメンバ関数の自動生成を理解する。
+moveされることを期待するならちゃんと書く。
+自明なdstrを定義すると暗黙のmoveはcopyになってしまうので注意する。
+### Item 18
+auto_ptrの代わりにunique_ptrを使う。
+カスタムdeleterは関数よりlambdaの方が効率がよい。
+
+* Q. socketやfile descriptorなどはポインタ型でないのでshared_ptrとか使いにくい。
+* A. see [Resource Management with Explicit Template Specializations](http://accu.org/index.php/journals/2086)
+
+### Item 22
+pImplの実装にunique_ptrを使う。
+cppに特殊メンバ関数をきちんと書かなければならない。
+pImplがnullptrになっているとき(自分自身もrhsも)を考慮したcopy cstrやoperator=を書く必要がある。
+
+たとえば
+```
+std::string a = "abc";
+std::string b(std::move(a));
+```
+したとき、`a.c_str()`の値は未規定(unspecified)ではあるが、`valid state`ではあるのでsegvしてはいけない。
+valid stateってなんだよという疑問はあるが。
+本は間違ってるので注意(最新版pdfでは修正されているらしい)。
+たとえばこんな感じ。
+```
+class A {
+    ....
+private:
+    struct Impl;
+    std::unique_ptr<Impl> pImpl_;
+};
+
+A::A(const A& rhs)
+    : pImpl_(std::unique_ptr<Impl>(rhs.pImpl_ ? new Impl(*rhs.pImpl_) : new Impl()))
+{
+}
+
+A& A::operator=(const A& rhs)
+{
+    if (rhs.pImpl_) {
+        if (pImpl_) {
+            *pImpl_ = *rhs.pImpl_;
+        } else {
+            pImpl_.reset(new Impl(*rhs.pImpl_));
+        }
+    } else {
+        pImpl_.reset();
+    }
+    return *this;
+}
+```
+そのあたりはmake_sharedを使うと楽になるよと書いてあるが、make_sharedを使うとインスタンスは共有されるので元のクラスの意味と違ってしまうので要注意(こちらも最新pdfでは記載されているらしい)。
+
+### Item 23
+
+std::moveやstd::forwardは単なるremove_reference_t<T>&&へのキャスト。
+std::moveはTの型を明示しなくてよいがstd::forwardは明示する必要がある。
+
+Q. std::moveをconst T&&に対してエラーするのはどうか。
