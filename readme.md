@@ -46,7 +46,7 @@
 
 ### [第7回 2015/7/15](https://atnd.org/events/67443)
 
-* Item 29, 30 : [@Linda_pp](https://twitter.com/Linda_pp)
+* [Item 29, 30の資料](https://speakerdeck.com/rhysd/effective-modern-c-plus-plus-du-shu-hui-item29-item30) : [@Linda_pp](https://twitter.com/Linda_pp)
 * [Item 31の資料](http://www.slideshare.net/mitsutaka_takeda/emcpp-item31) : [@MitsutakaTakeda](https://twitter.com/MitsutakaTakeda)
 * [Item 32の資料](http://www.slideshare.net/simizut22/emc-chapter32) : [@simizut22](https://twitter.com/simizut22)
 * [Item 33, 34の資料](http://www.slideshare.net/herumi/emcjp-item3334) : [@herumi](https://twitter.com/herumi)
