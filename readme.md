@@ -188,6 +188,7 @@ int main()
 ```
 
 Q. シグネチャに戻り値を含むのだっけ。
+
 A. http://stackoverflow.com/questions/290038/is-the-return-type-part-of-the-function-signature
 普通の関数は、戻り値の型をシグネチャに含まない。関数テンプレートの特殊化は含む。
 
@@ -204,3 +205,79 @@ A. http://stackoverflow.com/questions/290038/is-the-return-type-part-of-the-func
 &  && => &
 && && => &&
 ```
+
+### Item 29
+std::moveがいつでもできて軽いというわけじゃないので気をつけよう。
+
+VC2013がデフォルトのmove cstrを作らないので悲しい。VC2015は大丈夫。
+### Item 30
+perfect forwardingが失敗する例。
+
+* 初期化リスト(non deduced context)。autoのときと同じ(item 2)
+* ポインタとしての0やNULL
+* static const data
+```
+#include <stdio.h>
+#include <utility>
+
+struct A {
+    static const int a = 3;
+};
+
+void f(int x) { printf("%d\n", x); }
+
+template<class T>
+void fwd(T&& p) { f(std::forward<T>(p)); }
+
+int main()
+{
+//  f(A::a);
+    fwd(A::a);
+}
+```
+これがリンクエラーになるので要注意(gcc -O0)。
+```
+const int A::a;
+```
+が必要。
+
+### Item 31
+[資料](http://www.slideshare.net/mitsutaka_takeda/emcpp-item31)が詳しいのでそちらを参照。
+引数のキャプチャにはby-valueとby-referenceの二つがある。
+変数の寿命に十分注意すること。
+
+lambda式を定義と同時に呼び出すときは&でいいのではという案。
+```
+const auto size = [&]{ return condition ? 1 : 2; }();
+```
+
+Q. lambdaの中で使われなかった変数はコピーされる?
+
+A. 実際に使われた変数のみがコピーされる. 明示した場合はコピーされる.
+### Item 32
+C++14ではキャプチャ時にmoveできるようになった。
+```
+auto func = [pw = std::move(pw)]{ pw->isValidate(); };
+```
+補足: gcc-5.xでは
+```
+auto func = [pw{std::move(pw}]{ pw->isValidate(); };
+```
+という書き方もできる。
+
+C++11ではstd::bindを組み合わせればできる。
+
+Q. でも一時的なものだったらクラスを明示的に作った方がわかりやすくていいんじゃないか?
+
+### Item 33
+C++14で導入されたgeneric lambda。
+その中でstd::forwardしたいときはdecltypeを使う。
+```
+auto f = [](auto&& x) {
+  return func(normalize(std::forward<decltype(x)>(x)));
+}
+```
+### Item 34
+* C++11で入ったstd::bindはC++14で入ったmoveキャプチャ可能なlambdaとgeneric lambdaのおかげで不要になった。
+* std::bindを使うときは、bindするときに呼びたくない関数はbindを重ねる必要がある。
+Meyersが間違えるぐらいにややこしいので使わない方が無難。
