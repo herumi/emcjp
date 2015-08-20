@@ -58,12 +58,12 @@
 * [Item 37の資料](http://www.slideshare.net/uchan_nos/effective-modern-c-8 ) : [@uchan_nos](https://twitter.com/uchan_nos)
 * Item 38 : [@starpoz](https://twitter.com/starpoz)
 
-### [第9回 2015/9/30]
+### [第9回 2015/9/30](https://atnd.org/events/69460)
 
-* Item 39
-* Item 40
-* Item 41
-* Item 42
+* Item 39 : [@redboltz](https://twitter.com/redboltz)
+* Item 40 : [@simizut22](https://twitter.com/simizut22)
+* Item 41 : [@MitsutakaTakeda](https://twitter.com/MitsutakaTakeda)
+* Item 42 : [@herumi](https://twitter.com/herumi)
 
 ### 疑問やコメントなど(随時思い出したら書く)
 
