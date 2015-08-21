@@ -54,7 +54,7 @@
 ### [第8回 2015/8/19](https://atnd.org/events/68406)
 
 * [Item 35の資料](http://www.slideshare.net/KeisukeFukuda/effective-modern-c-item-35) : [@keisukefukuda](https://twitter.com/keisukefukuda)
-* [Item 36の資料](http://www.slideshare.net/simizut22/emcpp36) : [@simizut22](https://twitter.com/simizut22)
+* [Item 36の資料](http://www.slideshare.net/simizut22/effective-modern-cchapeter36) : [@simizut22](https://twitter.com/simizut22)
 * [Item 37の資料](http://www.slideshare.net/uchan_nos/effective-modern-c-8 ) : [@uchan_nos](https://twitter.com/uchan_nos)
 * [Item 38の資料](http://www.slideshare.net/starpos/effective-modern-c-8-item38) : [@starpoz](https://twitter.com/starpoz)
 
