@@ -68,4 +68,123 @@
 ### 疑問やコメントなど(随時思い出したら書く)
 
 [memo.md](memo.md)
-d](memo.md)
+
+### Item 39.
+
+* ポーリングのtips
+Intelにはbusy loopを検知してCPUパフォーマンスをあげて電力消費を減らすpause命令がある。
+
+参考:[Benefitting Power and Performance Sleep Loops](https://software.intel.com/en-us/articles/benefitting-power-and-performance-sleep-loops)
+
+* 条件変数のwaitは、イベントが本当に発生したらtrueを返すラムダ式と一緒に使うべき。
+偽の起動(spurious wakeup)があるため。
+
+参考:[条件変数とspurious wakeup](http://d.hatena.ne.jp/yohhoy/20120326/)
+
+Q. vector<thread> vtにemplace_backしている途中で例外が発生したらset_valueするまえに抜けるのでブロックする可能性がある?
+
+A. scope_exitをthreadを生成するループの前に置くとよいだろう。
+
+### Item 40.
+Q. intとかの整数型はいつでもlockでatomicを実現するの?
+
+A. アーキテクチャによって違う。Intel系でも32bit環境でint64_tだと結構複雑。
+VCだと`_InterlockedExchangeAdd64`, clangだと_atomic_fetch_add_8を呼ぶ。
+gccだとinlineでlock cmpxchg8bとloopの組み合わせ.
+```
+.L2:
+    movl    %eax, %ecx
+    movl    %edx, %ebx
+    addl    $1, %ecx
+    adcl    $0, %ebx
+    movl    %ebx, %ebp
+    movl    %ecx, %ebx
+    movl    %ebp, %ecx
+    lock cmpxchg8b  (%esi)
+    jne .L2
+```
+
+volatileの細かい仕様は各コンパイラの処理系依存。
+規格上CとC++でも違う。以下雑多なメモ。
+```
+void f(int *nv1, int *nv2, volatile int *v)
+{
+    *nv1 = 1;
+    *nv2 = 2;
+    *v = 3;
+    *nv2 = 4;
+    *v = 5;
+    *nv1 = 6;
+}
+```
+VC, clangでは1, 2, 3, 4, 5, 6全ての書き込み命令がその順序で生成された。
+```
+// VC2015
+mov DWORD PTR [rcx], 1
+mov DWORD PTR [rdx], 2
+mov DWORD PTR [r8], 3
+mov DWORD PTR [rdx], 4
+mov DWORD PTR [r8], 5
+mov DWORD PTR [rcx], 6
+```
+```
+// clang 3.5
+movl    $1, (%rdi)
+movl    $2, (%rsi)
+movl    $3, (%rdx)
+movl    $4, (%rsi)
+movl    $5, (%rdx)
+movl    $6, (%rdi)
+```
+gcc-4.8では1, 2の書き込みは消えた。
+```
+movl    $3, (%rdx)
+movl    $4, (%rsi)
+movl    $5, (%rdx)
+movl    $6, (%rdi)
+```
+
+* [MSDN](https://msdn.microsoft.com/ja-jp/library/12a04hfd.aspx)
+* [clang](http://llvm.org/docs/Atomics.html)
+* [gcc](https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html)
+volatileの最低限の要件は、シーケンスポイントにおいてvolatile変数より前の全てのアクセスが完了し、後続するアクセスは起こらないこと。
+シーケンスポイント間のvolatileアクセスの順序入れ替えや結合は許可されている。
+シーケンスポイントを越えてのその操作はできない。
+
+非volatileへのアクセスはvolatileへのアクセスに関して順序づけられない。
+volatile変数を非volatileメモリへの書き込みの順序づけのためのメモリバリアには使えない。
+```
+int *ptr = something;
+volatile int vobj;
+*ptr = something;
+vobj = 1;
+```
+vobjへの書き込みが起こるまでに*ptrへの書き込みがあることは保証されない。
+```
+int *ptr = something;
+volatile int vobj;
+*ptr = something;
+asm volatile ("" : : : "memory");
+vobj = 1;
+```
+しないといけない。
+
+* [g++](https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Volatiles.html)
+```
+void f(volatile int *v)
+{
+   *v;
+}
+```
+C++的には*v;をlvalueからrvalueへの変換をしない。脱参照された型は不完全かもしれない。
+その変換がメモリアクセスを引き起こすかどうかは明記しない。
+しかし、それだと大抵のプログラマが驚くのでg++ではvolatileオブジェクトの脱参照はCと同じに扱う。
+```
+movl (%rdi), %eax ; アクセス発生
+ret
+```
+clangでは消滅して単なるretになる。VCはアクセスを残す(保守的)。
+
+cf. シーケンスポイント
+`&&`の左側, `||'の左側, コンマ演算子の左側, 関数の呼び出し, 条件演算子の最初のオペランド, 完全な初期化式の終わり, 式ステートメントの式,
+if, switchないの制御式, while, doの制御式, forの3つの式, returnの式
