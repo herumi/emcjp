@@ -183,8 +183,19 @@ C++的には*v;をlvalueからrvalueへの変換をしない。脱参照され�
 movl (%rdi), %eax ; アクセス発生
 ret
 ```
-clangでは消滅して単なるretになる。VCはアクセスを残す(保守的)。
-
+VCも同様に残す。
+clangはCでbuildすると残す。C++では残さない。
+```
+clang -x c -S -Ofast t.c
+f:
+    movl    (%rdi), %eax
+    retq
+```
+```
+clang -x c++ -S -Ofast t.c
+f:
+    retq
+```
 cf. シーケンスポイント
 `&&`の左側, `||'の左側, コンマ演算子の左側, 関数の呼び出し, 条件演算子の最初のオペランド, 完全な初期化式の終わり, 式ステートメントの式,
 if, switchないの制御式, while, doの制御式, forの3つの式, returnの式
