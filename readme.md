@@ -202,7 +202,9 @@ if, switchないの制御式, while, doの制御式, forの3つの式, returnの
 
 # Item 41.
 Q. shared_ptrなどはconst&で渡す?
+
 A. 生ポインタを渡すこともある。あとconst shared_ptrはconstと紛らわしいのであまり使わないかも。
+
 ```
 #include <stdio.h>
 #include <memory>
