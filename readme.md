@@ -227,6 +227,6 @@ int main()
 
 ＊ slideの最後に上げられている参考文献へのリンク
 * [Keynote: The Evolving Search for Effective C++ by Scott Meyers](http://meetingcpp.com/index.php/tv14/items/23.html)
-** Item 42のpush_backとemplace_backの話もでている。
+    * Item 42のpush_backとemplace_backの話もでている。
 * [Back to the Basics! Essentials of Modern C++ Style by Herb Sutter](https://isocpp.org/blog/2015/02/cppcon-2014-back-to-the-basics-essentials-of-modern-c-style-herb-sutter)
-** cstrのみ値渡しという手法の提案
+    * cstrのみ値渡しという手法の提案
