@@ -199,3 +199,33 @@ f:
 cf. シーケンスポイント
 `&&`の左側, `||'の左側, コンマ演算子の左側, 関数の呼び出し, 条件演算子の最初のオペランド, 完全な初期化式の終わり, 式ステートメントの式,
 if, switchないの制御式, while, doの制御式, forの3つの式, returnの式
+
+# Item 41.
+Q. shared_ptrなどはconst&で渡す?
+A. 生ポインタを渡すこともある。あとconst shared_ptrはconstと紛らわしいのであまり使わないかも。
+```
+#include <stdio.h>
+#include <memory>
+
+struct A {
+  A(int a) : a(a) { printf("cstr %d\n", a); }
+  ~A() { printf("dstr %d\n", a); }
+  int a;
+};
+
+void f(const std::shared_ptr<A>& a)
+{
+  a.get()->a = 5; // 書き換え可能
+}
+
+int main()
+{
+  std::shared_ptr<A> a = std::make_shared<A>(3);
+  f(a);
+}
+```
+＊slideの最後に上げられている参考文献へのリンク
+** [Keynote: The Evolving Search for Effective C++ by Scott Meyers](http://meetingcpp.com/index.php/tv14/items/23.html)
+*** Item 42のpush_backとemplace_backの話もでている。
+** [Back to the Basics! Essentials of Modern C++ Style by Herb Sutter](https://isocpp.org/blog/2015/02/cppcon-2014-back-to-the-basics-essentials-of-modern-c-style-herb-sutter)
+*** cstrのみ値渡しという手法の提案
