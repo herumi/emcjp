@@ -60,7 +60,7 @@
 
 ### [第9回 2015/9/30](https://atnd.org/events/69460)
 
-* Item 39 : [@redboltz](https://twitter.com/redboltz)
+* [Item 39の資料](http://www.slideshare.net/taka111/effective-modern-c-study-group-item39) : [@redboltz](https://twitter.com/redboltz)
 * [Item 40の資料](http://www.slideshare.net/simizut22/effective-modernc9) : [@simizut22](https://twitter.com/simizut22)
 * [Item 41の資料](http://www.slideshare.net/mitsutaka_takeda/emcpp-item41) : [@MitsutakaTakeda](https://twitter.com/MitsutakaTakeda)
 * [Item 42の資料](http://www.slideshare.net/herumi/emcjp-item-42) : [@herumi](https://twitter.com/herumi)
