@@ -22,11 +22,11 @@
 * [Item 12の資料](http://www.slideshare.net/KeisukeFukuda/effective-modern-c-3) : [@keisukefukuda](https://twitter.com/keisukefukuda)
     - [blog](http://freak-da.hatenablog.com/entries/2015/03/26)
 * Item 13, 14 : [@pepshiso](https://twitter.com/pepshiso)
-* Item 15 : [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
+* [Item 15の資料](http://www.slideshare.net/kariya_mitsuru/effective-modern-c-3-item-15) : [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
 
 ### [第4回 2015/4/22](https://atnd.org/events/64371)
 
-* Item 16 [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
+* [Item 16の資料](http://www.slideshare.net/kariya_mitsuru/effective-modern-c-3-item16) : [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
 * [Item 17, 18の資料](http://www.slideshare.net/rigarash/effective-modern-c4-item-17-18) : [@rigarash](https://twitter.com/rigarash)
 * [Item 19, 20の資料](https://speakerdeck.com/rhysd/effective-modern-c-plus-plus-item19-item20) : [@linda_pp](https://twitter.com/linda_pp)
 
@@ -41,7 +41,7 @@
 
 * [Item 25の資料](http://www.slideshare.net/starpos/effective-modern-c-6-item25) [@starpoz](https://twitter.com/starpoz)
 * [Item 26の資料](http://www.slideshare.net/barfoo102/emc-26) [@regenschauer490](https://twitter.com/regenschauer490)
-* Item 27 [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
+* [Item 27の資料](http://www.slideshare.net/kariya_mitsuru/effective-modern-c-7-item-27) : [@kariya_mitsuru](https://twitter.com/kariya_mitsuru)
 * Item 28 [@redboltz](https://twitter.com/redboltz)
 
 ### [第7回 2015/7/15](https://atnd.org/events/67443)
